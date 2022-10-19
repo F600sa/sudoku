@@ -14,7 +14,25 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
 
+
 final  myControlloer = TextEditingController();
+
+  @override
+void initState() {
+  super.initState();
+
+  // Start listening to changes.
+  myControlloer.addListener(_printLatestValue);
+}
+@override
+void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    myControlloer.dispose();
+    super.dispose();
+  }
+
+
   Widget build(BuildContext context) {
     return MaterialApp(
 
@@ -22,16 +40,12 @@ final  myControlloer = TextEditingController();
         home: Scaffold(
           appBar:AppBar(actions: [IconButton(
             onPressed: (){},
-            icon: Icon(Icons.restart_alt_sharp),
+            icon: const Icon(Icons.restart_alt_sharp),
 
           ),
-
-          IconButton(
-            onPressed: (){},
-            icon: Icon(Icons.notification_important),
-          ),]
+          ],
           ) ,
-          floatingActionButton: FloatingActionButton.small(onPressed: (){}),
+          // floatingActionButton: FloatingActionButton.small(onPressed: (){}),
           
           body: Column(
             children: [
@@ -54,19 +68,22 @@ final  myControlloer = TextEditingController();
                             return Container(
                               
                                 // color: Color.fromARGB(255, 188, 189, 165),
-                                child:  TextField(
+                                
+                                child: TextField(
                                   
-                                  // controller: myControlloer,
+                                  onChanged: (text) {
+                                    print('$text');
+                                          },
                                   textAlign: TextAlign.center,
                                   decoration: InputDecoration(
                                     hintText: "${index+1}",
-                                    enabledBorder: OutlineInputBorder(
+                                    enabledBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(color: Colors.black,width: 1),
-                                      
-                                      
-                                      
                                     ),
+
                                   ),
+                                  // controller: myControlloer,
+                                  
                                 ),
                                 
                                 );
@@ -78,7 +95,10 @@ final  myControlloer = TextEditingController();
                     
                   
               ),
-              ElevatedButton(onPressed: (){}, child: Text("Run"),),
+              ElevatedButton(onPressed: (){}, child: const Text("Run"),),
+              SizedBox(height: 20,),
+              ElevatedButton(onPressed: (){clearText();}, child: const Text("clear"),),
+              SizedBox(height: 170,),
  ],
           ),
           
@@ -87,7 +107,11 @@ final  myControlloer = TextEditingController();
         ),);
       
   }
-  void main(){
-    print(myControlloer);
+  void clearText() {
+    myControlloer.clear();
   }
+void _printLatestValue() {
+  print('Second text field: ${myControlloer.text}');
+}
+
 }
