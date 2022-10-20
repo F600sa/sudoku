@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +18,10 @@ class _MyAppState extends State<MyApp> {
 
 
 final  myControlloer = TextEditingController();
+// int randomNumber = Random().nextInt(10);
+
+
+ 
 
   @override
 void initState() {
@@ -34,6 +40,10 @@ void dispose() {
 
 
   Widget build(BuildContext context) {
+  var rng = Random();
+  for (var i = 1; i < 10; i++) {
+    // print(rng.nextInt(9));
+  }
     return MaterialApp(
 
         debugShowCheckedModeBanner: false,
@@ -73,10 +83,12 @@ void dispose() {
                                   
                                   onChanged: (text) {
                                     print('$text');
+                                    
                                           },
+                                  
                                   textAlign: TextAlign.center,
                                   decoration: InputDecoration(
-                                    hintText: "${index+1}",
+                                    hintText: "${rng.nextInt(9)+1}",
                                     enabledBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(color: Colors.black,width: 1),
                                     ),
@@ -113,5 +125,6 @@ void dispose() {
 void _printLatestValue() {
   print('Second text field: ${myControlloer.text}');
 }
+
 
 }
