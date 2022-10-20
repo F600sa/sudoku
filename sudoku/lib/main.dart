@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
 
 final  myControlloer = TextEditingController();
 // int randomNumber = Random().nextInt(10);
-
+final rn =[Random().nextInt(10)+1];
 
  
 
@@ -41,10 +41,11 @@ void dispose() {
 
   Widget build(BuildContext context) {
   var rng = Random();
-  for (var i = 1; i < 10; i++) {
-    // print(rng.nextInt(9));
-  }
-    return MaterialApp(
+  
+  // for (var i = 1; i < 10; i++) {
+  //   // print(rng.nextInt(9));
+  // }
+    return MaterialApp( 
 
         debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -83,24 +84,28 @@ void dispose() {
                                   
                                   onChanged: (text) {
                                     print('$text');
-                                    
+                                    print("Index $index");
+                                    // print(index.);
                                           },
+                                      
                                   
                                   textAlign: TextAlign.center,
+                                  // ignore: prefer_const_constructors
                                   decoration: InputDecoration(
-                                    hintText: "${rng.nextInt(9)+1}",
+                                    // hintText: "${rng.nextInt(9)+1}",
                                     enabledBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(color: Colors.black,width: 1),
                                     ),
-
+                          
                                   ),
-                                  // controller: myControlloer,
+                                  controller:TextEditingController(text:"${rng.nextInt(9)+1}"),
                                   
                                 ),
                                 
                                 );
                           },
-                        ),);
+                        ),
+                        );
                       }),
                       
                 ),
