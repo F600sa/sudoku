@@ -35,9 +35,9 @@ class _MyAppState extends State<MyApp> {
 
   Widget build(BuildContext context) {
     var rng = Random();
-    for (var i = 1; i < 10; i++) {
-      // print(rng.nextInt(9));
-    }
+    // for (var i = 1; i < 10; i++) {
+    //   // print(rng.nextInt(9));
+    // }
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -53,6 +53,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ],
         ),
+
         // floatingActionButton: FloatingActionButton.small(onPressed: (){}),
 
         body: Column(
