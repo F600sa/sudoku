@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'dart:math';
-
+import 'package:sudoku_api/sudoku_api.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -93,8 +93,9 @@ void dispose() {
                                   // ignore: prefer_const_constructors
                                   decoration: InputDecoration(
                                     // hintText: "${rng.nextInt(9)+1}",
+
                                     enabledBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.black,width: 1),
+                                      borderSide: BorderSide(color: Colors.black,width: 2),
                                     ),
                           
                                   ),
@@ -106,7 +107,8 @@ void dispose() {
                           },
                         ),
                         );
-                      }),
+                      }
+                      ),
                       
                 ),
                     
